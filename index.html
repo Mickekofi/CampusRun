@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Run – UEW Smart Transport System</title>
+  <link rel="stylesheet" href="public/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="container navbar__inner">
+      <div class="navbar__brand">
+        <span class="brand-icon">🚌</span>
+        <span class="brand-name">Campus<strong>Run</strong></span>
+        <span class="brand-badge">UEW</span>
+      </div>
+      <nav class="navbar__links" id="nav-links">
+        <a href="#home" class="nav-link active" data-section="home">Home</a>
+        <a href="#routes" class="nav-link" data-section="routes">Routes</a>
+        <a href="#schedule" class="nav-link" data-section="schedule">Schedule</a>
+        <a href="#book" class="nav-link" data-section="book">Book a Ride</a>
+        <a href="#track" class="nav-link" data-section="track">Track Bus</a>
+      </nav>
+      <button class="navbar__hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <p class="hero__eyebrow">University of Education, Winneba</p>
+        <h1 class="hero__title">Smartest Campus<br />Transport System</h1>
+        <p class="hero__subtitle">
+          Safe, reliable and real-time campus transportation for UEW students,
+          staff and faculty across all campuses.
+        </p>
+        <div class="hero__actions">
+          <a href="#book" class="btn btn--primary">Book a Ride</a>
+          <a href="#routes" class="btn btn--outline">View Routes</a>
+        </div>
+      </div>
+      <div class="hero__stats">
+        <div class="stat-card">
+          <span class="stat-value" id="stat-buses">12</span>
+          <span class="stat-label">Active Buses</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-routes">8</span>
+          <span class="stat-label">Routes</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-trips">240+</span>
+          <span class="stat-label">Daily Trips</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-passengers">1,500+</span>
+          <span class="stat-label">Passengers/Day</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Routes Section -->
+  <section class="section" id="routes">
+    <div class="container">
+      <h2 class="section__title">Available Routes</h2>
+      <p class="section__subtitle">All campus-to-campus and town-to-campus routes operated by Campus Run</p>
+      <div class="routes-grid" id="routes-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule Section -->
+  <section class="section section--alt" id="schedule">
+    <div class="container">
+      <h2 class="section__title">Today's Schedule</h2>
+      <p class="section__subtitle">Real-time departure and arrival times for all routes</p>
+      <div class="schedule-controls">
+        <label for="schedule-route">Filter by route:</label>
+        <select id="schedule-route" class="select">
+          <option value="all">All Routes</option>
+        </select>
+      </div>
+      <div class="table-wrapper">
+        <table class="schedule-table" id="schedule-table">
+          <thead>
+            <tr>
+              <th>Route</th>
+              <th>From</th>
+              <th>To</th>
+              <th>Departure</th>
+              <th>Arrival</th>
+              <th>Bus</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="schedule-body">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Book a Ride Section -->
+  <section class="section" id="book">
+    <div class="container">
+      <h2 class="section__title">Book a Ride</h2>
+      <p class="section__subtitle">Reserve your seat on any campus run route</p>
+      <div class="booking-container">
+        <form class="booking-form" id="booking-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="passenger-name">Full Name</label>
+              <input type="text" id="passenger-name" placeholder="e.g. Kwame Mensah" required />
+            </div>
+            <div class="form-group">
+              <label for="passenger-id">Student/Staff ID</label>
+              <input type="text" id="passenger-id" placeholder="e.g. UEW/2024/0001" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="passenger-phone">Phone Number</label>
+              <input type="tel" id="passenger-phone" placeholder="e.g. 0244000000" required />
+            </div>
+            <div class="form-group">
+              <label for="book-route">Select Route</label>
+              <select id="book-route" required>
+                <option value="">-- Choose a route --</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="book-date">Travel Date</label>
+              <input type="date" id="book-date" required />
+            </div>
+            <div class="form-group">
+              <label for="book-time">Preferred Departure</label>
+              <select id="book-time" required>
+                <option value="">-- Select departure time --</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="book-seats">Number of Seats</label>
+            <input type="number" id="book-seats" min="1" max="5" value="1" required />
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Confirm Booking</button>
+        </form>
+        <!-- Booking confirmation -->
+        <div class="booking-confirmation hidden" id="booking-confirmation">
+          <div class="confirmation-icon">✅</div>
+          <h3>Booking Confirmed!</h3>
+          <p id="confirmation-details"></p>
+          <p class="confirmation-ref">Booking Reference: <strong id="confirmation-ref"></strong></p>
+          <button class="btn btn--outline" id="new-booking-btn">Make Another Booking</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Track Bus Section -->
+  <section class="section section--alt" id="track">
+    <div class="container">
+      <h2 class="section__title">Track Your Bus</h2>
+      <p class="section__subtitle">Enter your booking reference or select a route to see live bus status</p>
+      <div class="track-controls">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="track-ref">Booking Reference</label>
+            <input type="text" id="track-ref" placeholder="e.g. CR-2024-0001" />
+          </div>
+          <div class="form-group">
+            <label for="track-route-select">Or select a route</label>
+            <select id="track-route-select">
+              <option value="">-- Select a route --</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn--primary" id="track-btn">Track Bus</button>
+      </div>
+      <div class="buses-grid" id="buses-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="brand-icon">🚌</span>
+        <span class="brand-name">Campus<strong>Run</strong></span>
+      </div>
+      <p class="footer__tagline">University of Education, Winneba – Smart Transport System</p>
+      <p class="footer__copy">&copy; <span id="footer-year"></span> Campus Run UEW. Licensed under GPL-3.0.</p>
+    </div>
+  </footer>
+
+  <script src="public/js/data.js"></script>
+  <script src="public/js/app.js"></script>
+</body>
+</html>
