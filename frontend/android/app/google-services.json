@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "202348341324",
+    "project_id": "flutter-demo-8f417",
+    "storage_bucket": "flutter-demo-8f417.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:202348341324:android:57424ad00ae63d9390ace9",
+        "android_client_info": {
+          "package_name": "com.intelligence.campusrun"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7t39J9TaiZrscy3oXqUsOg07IjrvP0dY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

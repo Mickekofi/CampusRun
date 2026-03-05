@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'session.dart';
+import 'session_screen.dart';
 import 'theme_settings.dart';
 
 // ============================================================================
@@ -109,13 +109,8 @@ class _SplashScreenState extends State<SplashScreen>
       body: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 24),
-        // Gradient background
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [AppBrandColors.white, const Color(0xFFE3F2FD)],
-          ),
+        decoration: const BoxDecoration(
+          gradient: AppBrandColors.blackBackgroundGradient,
         ),
         // ====================================================================
         // SPLASH SCREEN CONTENT
@@ -129,19 +124,28 @@ class _SplashScreenState extends State<SplashScreen>
                 scale: _scaleAnimation,
                 child: FadeTransition(
                   opacity: _fadeAnimation,
-                  child: const Icon(
-                    Icons.pedal_bike_rounded,
-                    size: 96,
-                    color: AppBrandColors.red,
+                  child: ShaderMask(
+                    shaderCallback: (bounds) {
+                      return AppBrandColors.redYellowGradient.createShader(
+                        bounds,
+                      );
+                    },
+                    child: const Icon(
+                      Icons.pedal_bike_rounded,
+                      size: 96,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
               const SizedBox(height: 24),
 
-              Text(
+              const _GradientText(
                 '',
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                style: TextStyle(
+                  fontSize: 36,
                   fontWeight: FontWeight.bold,
+                  letterSpacing: 0.8,
                 ),
               ),
               const SizedBox(height: 16),
@@ -154,6 +158,7 @@ class _SplashScreenState extends State<SplashScreen>
                   fontSize: 15,
                   height: 1.5,
                   fontStyle: FontStyle.italic,
+                  color: AppBrandColors.whiteMuted,
                 ),
               ),
               const SizedBox(height: 28),
@@ -166,16 +171,38 @@ class _SplashScreenState extends State<SplashScreen>
                   child: const LinearProgressIndicator(
                     minHeight: 8,
                     valueColor: AlwaysStoppedAnimation<Color>(
-                      AppBrandColors.red,
+                      AppBrandColors.redYellowMid,
                     ),
-                    backgroundColor: Color(0xFFBBDEFB),
+                    backgroundColor: Color(0xFF2E2E2E),
                   ),
                 ),
+              ),
+              const SizedBox(height: 18),
+              const Icon(
+                Icons.flash_on_rounded,
+                color: AppBrandColors.greenMid,
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class _GradientText extends StatelessWidget {
+  const _GradientText(this.text, {required this.style});
+
+  final String text;
+  final TextStyle style;
+
+  @override
+  Widget build(BuildContext context) {
+    return ShaderMask(
+      shaderCallback: (bounds) {
+        return AppBrandColors.redYellowGradient.createShader(bounds);
+      },
+      child: Text(text, style: style.copyWith(color: Colors.white)),
     );
   }
 }
