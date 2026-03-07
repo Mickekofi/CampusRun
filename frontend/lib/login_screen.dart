@@ -3,12 +3,12 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import 'admin_dashboard.dart';
+import 'admin_dashboard_screen.dart';
 import 'admin_ip.dart';
 import 'log_session.dart';
 import 'session_screen.dart';
 import 'theme_settings.dart';
-import 'user_dashboard.dart';
+import 'user_dashboard_screen.dart';
 // import 'user_password_screen.dart';
 import 'phone_validition_screen.dart';
 

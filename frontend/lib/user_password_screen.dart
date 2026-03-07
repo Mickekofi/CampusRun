@@ -7,7 +7,7 @@ import 'admin_ip.dart';
 import 'log_session.dart';
 import 'phone_validition_screen.dart';
 import 'theme_settings.dart';
-import 'user_dashboard.dart';
+import 'user_dashboard_screen.dart';
 
 class UserPasswordScreen extends StatefulWidget {
   const UserPasswordScreen({super.key, required this.userProfile});

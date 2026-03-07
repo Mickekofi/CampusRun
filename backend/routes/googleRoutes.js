@@ -1,5 +1,5 @@
 const express = require('express');
-const { google } = require('../controllers/google');
+const { google } = require('../controllers/google_controller');
 
 const router = express.Router();
 
