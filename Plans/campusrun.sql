@@ -5,6 +5,7 @@ CREATE TABLE
         student_id VARCHAR(50) NOT NULL UNIQUE,
         full_name VARCHAR(150) NOT NULL,
         email VARCHAR(150) NOT NULL UNIQUE,
+        profile_picture VARCHAR(255) DEFAULT NULL,
         phone VARCHAR(20) NOT NULL UNIQUE,
         password_hash VARCHAR(255) NOT NULL,
         wallet_balance DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
@@ -261,4 +262,24 @@ CREATE TABLE
         INDEX idx_user (user_id),
         INDEX idx_status (status),
         INDEX idx_type (violation_type)
+    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+
+-- This table records all login attempts (admin/user), including success/failure, source IP, and device user-agent.
+CREATE TABLE
+    login_audit_logs (
+        id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        login_reference VARCHAR(120) NOT NULL UNIQUE,
+        actor_type ENUM ('admin', 'user', 'unknown') NOT NULL DEFAULT 'unknown',
+        actor_id BIGINT UNSIGNED NULL,
+        identifier VARCHAR(150) NOT NULL,
+        login_status ENUM ('successful', 'failed') NOT NULL,
+        failure_reason VARCHAR(255) NULL,
+        ip_address VARCHAR(45) NULL,
+        user_agent VARCHAR(255) NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        INDEX idx_actor_type (actor_type),
+        INDEX idx_actor_id (actor_id),
+        INDEX idx_identifier (identifier),
+        INDEX idx_status (login_status),
+        INDEX idx_created_at (created_at)
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;

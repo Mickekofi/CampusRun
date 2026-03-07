@@ -1,15 +1,41 @@
 import 'dart:async';
 
+import 'package:firebase_core/firebase_core.dart';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+import 'firebase_options.dart';
 
 import 'session_screen.dart';
 import 'theme_settings.dart';
+
+//This file serves as the main entry point for the CampusRun application. It initializes Firebase(not an option), sets up theming, and defines the root widget and splash screen with animations and auto-navigation to the session_screen.dart after a specified delay. It uses Branded Colors and Arts defined in the theme_settings.dart file.
 
 // ============================================================================
 // APPLICATION ENTRY POINT
 // ============================================================================
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  try {
+    await dotenv.load(fileName: '.env');
+  } catch (_) {
+    // Optional in development; falls back to default values.
+  }
+
+  if (kIsWeb ||
+      defaultTargetPlatform == TargetPlatform.android ||
+      defaultTargetPlatform == TargetPlatform.iOS ||
+      defaultTargetPlatform == TargetPlatform.macOS ||
+      defaultTargetPlatform == TargetPlatform.windows) {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  }
+
   runApp(const CampusRunApp());
 }
 
@@ -87,6 +113,7 @@ class _SplashScreenState extends State<SplashScreen>
       end: 1.03,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
+    // ===================== The Timer Is Set Here as 20 Seconds====
     // Auto-navigate to SessionPage after 20 seconds
     _timer = Timer(const Duration(seconds: 20), () {
       if (!mounted) return;
@@ -190,6 +217,7 @@ class _SplashScreenState extends State<SplashScreen>
   }
 }
 
+// A simple widget to display gradient text, used for the app name on the splash screen.
 class _GradientText extends StatelessWidget {
   const _GradientText(this.text, {required this.style});
 
