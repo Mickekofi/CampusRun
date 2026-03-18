@@ -158,6 +158,7 @@ CREATE TABLE
             ride_id BIGINT UNSIGNED NULL,
             amount DECIMAL(10, 2) NOT NULL,
             payment_method ENUM ('wallet', 'momo', 'card') NOT NULL,
+            payment_provider ENUM('MTN', 'Telecel', 'AirtelTigo', 'Paystack', 'Hubtel', 'Internal') NULL,
             transaction_type ENUM (
                 'ride_payment',
                 'wallet_topup',
