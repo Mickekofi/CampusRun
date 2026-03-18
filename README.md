@@ -1,6 +1,6 @@
 =<p align="center">
   <a href="">
-    <img src="https://github.com/Mickekofi/CampusRun/blob/master/logo.jpg" alt="Logo" width="130">
+    <img src="https://github.com/Mickekofi/CampusRun/blob/master/logo.jpeg" alt="Logo" width="130">
   </a>
   <a href = "">
   <h1 align="center"><strong>CampusRun</strong></h1>
@@ -15,9 +15,10 @@
   </p>
 </p>
 
----
 
+---
 🆃🅷🅴 🆄🅽🅸🆅🅴🆁🆂🅸🆃🆈'🆂 🆂🅼🅰🆁🆃🅴🆂🆃 🆃🆁🅰🅽🆂🅿🅾🆁🆃
+
 As apart of the **University Of Education, Winneba** long term innovational vision towards archiving smart Campus solutions, We Introduce **CampusRun**;  
 At CampusRun We are commited to one Course: **Innovating Transport**
 
@@ -40,7 +41,7 @@ We are making transport Available, at all Campuses (North, Central, South) and, 
 ---
 
 ### Our Promise
-> “CampusRun will allow all affliates to move across campus in under 5 minutes instead of walking 20 minutes.”
+> “CampusRun will allow all affliates smart mobility across campus in under 5 minutes instead of walking 20 minutes.”
 
 
 ---
@@ -94,12 +95,18 @@ Ester arrives at the dock. She sees Bike #12 is now available. The backend preve
 
 ---
 
-### 📦 Introducing Today; The MVP
+### Introducing Today; The MVP
 Here are the most Important to talk about:
 
 1. See also **[The Product Graphics Engineering Design](https://github.com/Mickekofi/CampusRun/product-graphics-engineering-design.md)**
+
 2. See also **[The Product Engineering Architecture](https://github.com/Mickekofi/CampusRun/product-engineering-architecture.md)**
-3. See also [The DataBase Engineering Design](https://github.com/Mickekofi/CampusRun/DataBase-engineering-design.md)**
+
+3. See also **[The DataBase Engineering Design](https://github.com/Mickekofi/CampusRun/DataBase-engineering-design.md)**
+
 4. See also **[Project Scope and Risk Assessment](https://github.com/Mickekofi/CampusRun/project-scope-risk-assessment.md)**
+
 5. See also **[Requirement and System Specification](https://github.com/Mickekofi/CampusRun/requirement-system-specification.md)**
+
 6. See also **[Product StartUp and Regulation](https://github.com/Mickekofi/CampusRun/product-startup-regulation.md)**
+
