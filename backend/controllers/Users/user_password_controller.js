@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const pool = require('../config/db');
+const pool = require('../../config/db');
 
 const setUserPassword = async (req, res) => {
   const {

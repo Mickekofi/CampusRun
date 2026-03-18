@@ -70,6 +70,9 @@ CREATE TABLE
         battery_level TINYINT UNSIGNED NOT NULL DEFAULT 100,
         gps_lat DECIMAL(10, 8) NULL,
         gps_lng DECIMAL(11, 8) NULL,
+
+        speed_kmh DECIMAL(5,2) NULL AFTER gps_lng,
+        heading DECIMAL(5,2) NULL AFTER speed_kmh;
         status ENUM (
             'available',
             'reserved',
@@ -131,6 +134,7 @@ CREATE TABLE
         distance_fare DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
         penalty_amount DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
         total_fare DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
+        allocated_time INT UNSIGNED NULL,
         ride_status ENUM ('active', 'completed', 'cancelled') NOT NULL DEFAULT 'active',
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -146,62 +150,62 @@ CREATE TABLE
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 -- This table stores:• Every financial transaction • Wallet deduction • MoMo payment • Refund • Failed attempt
-CREATE TABLE
-    payments (
-        id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        payment_reference VARCHAR(120) NOT NULL UNIQUE,
-        user_id BIGINT UNSIGNED NOT NULL,
-        ride_id BIGINT UNSIGNED NULL,
-        amount DECIMAL(10, 2) NOT NULL,
-        payment_method ENUM ('wallet', 'momo', 'card') NOT NULL,
-        transaction_type ENUM (
-            'ride_payment',
-            'wallet_topup',
-            'refund',
-            'penalty'
-        ) NOT NULL,
-        payment_status ENUM ('pending', 'successful', 'failed') NOT NULL DEFAULT 'pending',
-        external_reference VARCHAR(150) NULL,
-        processed_by BIGINT UNSIGNED NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE,
-        FOREIGN KEY (ride_id) REFERENCES rides (id) ON DELETE SET NULL ON UPDATE CASCADE,
-        FOREIGN KEY (processed_by) REFERENCES admins (id) ON DELETE SET NULL ON UPDATE CASCADE,
-        INDEX idx_user (user_id),
-        INDEX idx_ride (ride_id),
-        INDEX idx_status (payment_status),
-        INDEX idx_type (transaction_type)
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+    CREATE TABLE
+        payments (
+            id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            payment_reference VARCHAR(120) NOT NULL UNIQUE,
+            user_id BIGINT UNSIGNED NOT NULL,
+            ride_id BIGINT UNSIGNED NULL,
+            amount DECIMAL(10, 2) NOT NULL,
+            payment_method ENUM ('wallet', 'momo', 'card') NOT NULL,
+            transaction_type ENUM (
+                'ride_payment',
+                'wallet_topup',
+                'refund',
+                'penalty'
+            ) NOT NULL,
+            payment_status ENUM ('pending', 'successful', 'failed') NOT NULL DEFAULT 'pending',
+            external_reference VARCHAR(150) NULL,
+            processed_by BIGINT UNSIGNED NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE,
+            FOREIGN KEY (ride_id) REFERENCES rides (id) ON DELETE SET NULL ON UPDATE CASCADE,
+            FOREIGN KEY (processed_by) REFERENCES admins (id) ON DELETE SET NULL ON UPDATE CASCADE,
+            INDEX idx_user (user_id),
+            INDEX idx_ride (ride_id),
+            INDEX idx_status (payment_status),
+            INDEX idx_type (transaction_type)
+        ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
--- This table records: • Every wallet top-up • Every ride deduction • Every penalty deduction • Every refund • Every manual adjustment It forms a full financial audit trail per user.
-CREATE TABLE
-    wallet_transactions (
-        id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        transaction_reference VARCHAR(120) NOT NULL UNIQUE,
-        user_id BIGINT UNSIGNED NOT NULL,
-        payment_id BIGINT UNSIGNED NULL,
-        ride_id BIGINT UNSIGNED NULL,
-        transaction_type ENUM (
-            'topup',
-            'debit',
-            'refund',
-            'penalty',
-            'adjustment'
-        ) NOT NULL,
-        amount DECIMAL(10, 2) NOT NULL,
-        balance_before DECIMAL(10, 2) NOT NULL,
-        balance_after DECIMAL(10, 2) NOT NULL,
-        processed_by BIGINT UNSIGNED NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE,
-        FOREIGN KEY (payment_id) REFERENCES payments (id) ON DELETE SET NULL ON UPDATE CASCADE,
-        FOREIGN KEY (ride_id) REFERENCES rides (id) ON DELETE SET NULL ON UPDATE CASCADE,
-        FOREIGN KEY (processed_by) REFERENCES admins (id) ON DELETE SET NULL ON UPDATE CASCADE,
-        INDEX idx_user (user_id),
-        INDEX idx_type (transaction_type),
-        INDEX idx_created (created_at)
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+    -- This table records: • Every wallet top-up • Every ride deduction • Every penalty deduction • Every refund • Every manual adjustment It forms a full financial audit trail per user.
+    CREATE TABLE
+        wallet_transactions (
+            id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            transaction_reference VARCHAR(120) NOT NULL UNIQUE,
+            user_id BIGINT UNSIGNED NOT NULL,
+            payment_id BIGINT UNSIGNED NULL,
+            ride_id BIGINT UNSIGNED NULL,
+            transaction_type ENUM (
+                'topup',
+                'debit',
+                'refund',
+                'penalty',
+                'adjustment'
+            ) NOT NULL,
+            amount DECIMAL(10, 2) NOT NULL,
+            balance_before DECIMAL(10, 2) NOT NULL,
+            balance_after DECIMAL(10, 2) NOT NULL,
+            processed_by BIGINT UNSIGNED NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE,
+            FOREIGN KEY (payment_id) REFERENCES payments (id) ON DELETE SET NULL ON UPDATE CASCADE,
+            FOREIGN KEY (ride_id) REFERENCES rides (id) ON DELETE SET NULL ON UPDATE CASCADE,
+            FOREIGN KEY (processed_by) REFERENCES admins (id) ON DELETE SET NULL ON UPDATE CASCADE,
+            INDEX idx_user (user_id),
+            INDEX idx_type (transaction_type),
+            INDEX idx_created (created_at)
+        ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 -- This table stores: • Real-time GPS updates • Battery levels • Speed • Lock status • Movement tracking • Anti-theft monitoring
 -- This is NOT transactional money data.

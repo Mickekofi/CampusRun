@@ -1,4 +1,4 @@
-const pool = require('../config/db');
+const pool = require('../../config/db');
 
 // Validation Functions
 const validateInput = (studentId, email, phoneNumber) => {

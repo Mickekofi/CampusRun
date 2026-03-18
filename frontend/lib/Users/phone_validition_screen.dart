@@ -4,9 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import 'admin_ip.dart';
-import 'log_session.dart';
-import 'theme_settings.dart';
+import '../admin_ip.dart';
+import '../log_session.dart';
+import '../theme_settings.dart';
 import 'user_dashboard_screen.dart';
 
 class PhoneValiditionScreen extends StatefulWidget {

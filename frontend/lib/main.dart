@@ -115,7 +115,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     // ===================== The Timer Is Set Here as 20 Seconds====
     // Auto-navigate to SessionPage after 20 seconds
-    _timer = Timer(const Duration(seconds: 20), () {
+    _timer = Timer(const Duration(seconds: 8), () {
       if (!mounted) return;
       Navigator.of(
         context,

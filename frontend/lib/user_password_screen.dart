@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import 'admin_ip.dart';
-import 'log_session.dart';
-import 'phone_validition_screen.dart';
-import 'theme_settings.dart';
-import 'user_dashboard_screen.dart';
+import '../admin_ip.dart';
+import '../log_session.dart';
+import 'Users/phone_validition_screen.dart';
+import '../theme_settings.dart';
+import 'Users/user_dashboard_screen.dart';
 
 class UserPasswordScreen extends StatefulWidget {
   const UserPasswordScreen({super.key, required this.userProfile});

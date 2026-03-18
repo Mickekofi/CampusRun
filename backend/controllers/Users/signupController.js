@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const pool = require('../config/db');
+const pool = require('../../config/db');
 
 const UEW_STUDENT_EMAIL_REGEX = /^[A-Za-z0-9._%+-]+@st\.uew\.edu\.gh$/;
 

@@ -8,12 +8,12 @@ import 'package:http/http.dart' as http;
 
 import 'admin_ip.dart';
 import 'log_session.dart';
-import 'phone_validition_screen.dart';
+import 'Users/phone_validition_screen.dart';
 import 'theme_settings.dart';
-import 'signup_screen.dart';
+import 'Users/signup_screen.dart';
 import 'login_screen.dart';
-import 'user_dashboard_screen.dart';
-import 'user_password_screen.dart';
+import 'Users/user_dashboard_screen.dart';
+import 'Users/user_password_screen.dart';
 
 //This file serves as the entry point for user authentication. It provides 3 options: signing up, logging in, and continuing with Google.
 
