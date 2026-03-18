@@ -1,6 +1,6 @@
 =<p align="center">
   <a href="">
-    <img src="https://github.com/Mickekofi/CampusRun/blob/master/logo.jpeg" alt="Logo" width="130">
+    <img src="https://github.com/Mickekofi/CampusRun/blob/main/bike_logo.png" alt="Logo" width="130">
   </a>
   <a href = "">
   <h1 align="center"><strong>CampusRun</strong></h1>
