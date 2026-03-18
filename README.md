@@ -102,4 +102,4 @@ Here are the most Important to talk about:
 3. See also [The DataBase Engineering Design](https://github.com/Mickekofi/CampusRun/DataBase-engineering-design.md)**
 4. See also **[Project Scope and Risk Assessment](https://github.com/Mickekofi/CampusRun/project-scope-risk-assessment.md)**
 5. See also **[Requirement and System Specification](https://github.com/Mickekofi/CampusRun/requirement-system-specification.md)**
-
+6. See also **[Product StartUp and Regulation](https://github.com/Mickekofi/CampusRun/product-startup-regulation.md)**
