@@ -100,7 +100,7 @@ Here are the most Important to talk about:
 
 1. See also **[The Product Graphics Engineering Design](https://github.com/Mickekofi/CampusRun/product-graphics-engineering-design.md)**
 
-2. See also **[The Product Engineering Architecture](https://github.com/Mickekofi/CampusRun/product-engineering-architecture.md)**
+2. See also **[The Product Engineering Architecture](https://github.com/Mickekofi/CampusRun/blob/main/product-engineering-architecture.md)**
 
 3. See also **[The DataBase Engineering Design](https://github.com/Mickekofi/CampusRun/DataBase-engineering-design.md)**
 

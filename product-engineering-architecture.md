@@ -1,11 +1,6 @@
-## See also
-**[The Product Engineering Architecture](https://github.com/Mickekofi/CampusRun/product-engineering-architecture.md)**
+# Single Source of Truth
 
----
-
-# Its a Single Source of Truth
-
-## THE FRONTEND BACKEND FLOW ARCHITECTURE
+- It serves as the single source of truth for all frontend-to-backend communication, routing, and data persistence.
 
 1. Frontend say `frontend/lib/Users/signupscreen.dart` sends a POST request
 
