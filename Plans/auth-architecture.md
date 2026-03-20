@@ -8,8 +8,6 @@ Use a **state-driven authentication architecture** where:
 
 This keeps business rules centralized, reduces duplicated logic, and makes flows reusable across projects.
 
----
-
 ## 2) Purpose of This Architecture
 - Support both **admin** and **user** access in one coherent system.
 - Support mixed identity methods: **manual login** and **Google sign-in**.
