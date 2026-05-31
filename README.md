@@ -110,3 +110,157 @@ Here are the most Important to talk about:
 
 6. See also **[Product StartUp and Regulation](https://github.com/Mickekofi/CampusRun/product-startup-regulation.md)**
 
+---
+
+### Requirements and Installation
+
+#### Requirements
+
+Before setting up CampusRun locally, make sure you have:
+
+- Node.js and npm
+- Flutter SDK
+- MySQL server
+- Git
+- Android Studio, VS Code, or another Flutter-compatible editor
+- An emulator, simulator, or physical device for running the app
+
+#### Project Structure
+
+This repository is split into two main parts:
+
+- `backend/` for the Node.js API
+- `frontend/` for the Flutter app
+
+#### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/Mickekofi/CampusRun.git
+cd CampusRun
+```
+
+#### Step 2: Set Up the Database
+
+The backend expects a MySQL database and the connection values are read from `backend/.env`.
+
+1. Create a MySQL database named `campusrun_db`.
+2. Import the schema from `Plans/campusrun.sql` into that database.
+3. Confirm your MySQL server is running.
+
+A typical MySQL setup looks like this:
+
+```bash
+mysql -u root -p
+CREATE DATABASE campusrun_db;
+USE campusrun_db;
+SOURCE Plans/campusrun.sql;
+```
+
+If you use MySQL Workbench or phpMyAdmin, you can import the SQL file there instead.
+
+#### Step 3: Configure the Backend Environment
+
+Create `backend/.env` using `backend/.env.example` as the template.
+
+Example:
+
+```env
+NODE_ENV=development
+PORT=5000
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_password
+DB_NAME=campusrun_db
+JWT_SECRET=replace_with_a_secure_secret
+JWT_EXPIRES_IN=30d
+```
+
+The backend reads these values in `backend/config/db.js` and `backend/server.js`.
+
+#### Step 4: Install Backend Dependencies
+
+```bash
+cd backend
+npm install
+```
+
+This installs the Express server, MySQL client, CORS support, file upload handling, and dotenv configuration used by the API.
+
+#### Step 5: Configure the Flutter Environment
+
+Create `frontend/.env` using `frontend/.env.example` as the template.
+
+Example:
+
+```env
+BACKEND_URL=http://your-backend-ip:5000
+```
+
+If you do not set `BACKEND_URL`, you can use the split values instead:
+
+```env
+BACKEND_IP=your-backend-ip
+BACKEND_PORT=5000
+```
+
+The Flutter app loads this file in `frontend/lib/main.dart` and uses it in `frontend/lib/admin_ip.dart`.
+
+#### Step 6: Install Flutter Dependencies
+
+```bash
+cd ../frontend
+flutter pub get
+```
+
+This fetches the packages required by the Flutter client, including Firebase, HTTP, file picking, image picking, map support, and dotenv.
+
+#### Step 7: Run the Backend Server
+
+From the `backend/` folder:
+
+```bash
+npm start
+```
+
+The server starts on the port defined in `backend/.env`, or `5000` if no port is set.
+
+#### Step 8: Run the Flutter App
+
+From the `frontend/` folder:
+
+```bash
+flutter run
+```
+
+If you want to run on a specific device, list your devices first:
+
+```bash
+flutter devices
+```
+
+Then run with the desired target:
+
+```bash
+flutter run -d <device_id>
+```
+
+#### Step 9: Verify the Setup
+
+Once both apps are running:
+
+- Open the Flutter app on your device or emulator
+- Confirm the app can reach the backend URL from the `.env` file
+- Check the backend health endpoint if needed:
+
+```bash
+curl http://localhost:5000/api/health
+```
+
+You should receive a JSON response showing that the server is active.
+
+#### Common Notes
+
+- Keep `backend/.env` and `frontend/.env` out of version control
+- Make sure MySQL is running before starting the backend
+- If the app cannot connect, check that `BACKEND_URL`, `DB_HOST`, `DB_USER`, `DB_PASSWORD`, and `DB_NAME` are correct
+- If you change environment variables, restart the backend and rerun the Flutter app
