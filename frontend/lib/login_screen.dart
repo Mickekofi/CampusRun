@@ -3,14 +3,14 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import 'Admininistrator/admin_dashboard_screen.dart';
+import 'Administrator/admin_dashboard_screen.dart';
 import 'admin_ip.dart';
 import 'log_session.dart';
 import 'session_screen.dart';
 import 'theme_settings.dart';
 import 'Users/user_dashboard_screen.dart';
 // import 'user_password_screen.dart';
-import 'Users/phone_validition_screen.dart';
+import 'Users/phone_validation_screen.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

@@ -21,7 +21,7 @@ INSERT INTO admins (
     'snow',
     'snow@gmail.com',
     '+233000000000',
-    '$2b$10$YJn9rG0xkN55xufzfkacae2sEJ41W..1kyihV7q8HzQFCfoqt5hkO',
+    '$2b$10$HonkZ/tRUbAQ66q8QO6AJerezHxvLyovKB0Q/ErpQcpcyW1FHmV1W',
     'super_admin',
     'active'
 );

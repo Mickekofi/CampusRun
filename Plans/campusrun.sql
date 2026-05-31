@@ -70,9 +70,8 @@ CREATE TABLE
         battery_level TINYINT UNSIGNED NOT NULL DEFAULT 100,
         gps_lat DECIMAL(10, 8) NULL,
         gps_lng DECIMAL(11, 8) NULL,
-
-        speed_kmh DECIMAL(5,2) NULL AFTER gps_lng,
-        heading DECIMAL(5,2) NULL AFTER speed_kmh;
+        speed_kmh DECIMAL(5,2) NULL,
+        heading DECIMAL(5,2) NULL,
         status ENUM (
             'available',
             'reserved',
@@ -281,7 +280,7 @@ CREATE TABLE
         failure_reason VARCHAR(255) NULL,
         ip_address VARCHAR(45) NULL,
         user_agent VARCHAR(255) NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,        
         INDEX idx_actor_type (actor_type),
         INDEX idx_actor_id (actor_id),
         INDEX idx_identifier (identifier),

@@ -8,7 +8,7 @@
 node:internal/modules/cjs/loader:1210
   throw err;
   ^
-
+  
 Error: Cannot find module '../controllers/Administrator/signupController'
 Require stack:
 - /home/michael-ubuntu/CampusRun/backend/routes/Users/signupRoutes.js

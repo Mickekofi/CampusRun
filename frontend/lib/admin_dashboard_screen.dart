@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'Admininistrator/admin_bike_operations_screen.dart';
-import 'Admininistrator/admin_bike_upload_screen.dart';
-import 'Admininistrator/admin_station_upload_screen.dart';
-import 'Admininistrator/admin_user_monitor_screen.dart';
+import 'Administrator/admin_bike_operations_screen.dart';
+import 'Administrator/admin_bike_upload_screen.dart';
+import 'Administrator/admin_station_upload_screen.dart';
+import 'Administrator/admin_user_monitor_screen.dart';
 import '../theme_settings.dart';
 
 class AdminDashboardPage extends StatefulWidget {

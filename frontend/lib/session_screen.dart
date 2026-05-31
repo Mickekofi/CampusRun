@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 
 import 'admin_ip.dart';
 import 'log_session.dart';
-import 'Users/phone_validition_screen.dart';
+import 'Users/phone_validation_screen.dart';
 import 'theme_settings.dart';
 import 'Users/signup_screen.dart';
 import 'login_screen.dart';

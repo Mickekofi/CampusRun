@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 class AdminIp {
   const AdminIp._();
 
-  static const String _defaultBaseUrl = 'http://60.30.59.224:5000';
+  static const String _defaultBaseUrl = 'http://60.30.174.208:5000';
 
   static String get baseUrl {
     const configured = String.fromEnvironment('BACKEND_URL', defaultValue: '');

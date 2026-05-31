@@ -104,7 +104,7 @@ const ensureTrackerTables = async () => {
   `);
 };
 
-// Initialise tables on module load (non-blocking — server starts regardless)
+// Initialize tables on module load (non-blocking — server starts regardless)
 ensureTrackerTables().catch((err) =>
   console.error('[LiveTracker] Table setup error:', err.message)
 );

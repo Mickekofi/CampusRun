@@ -104,7 +104,7 @@ const listBikes = async (req, res) => {
       message: 'Invalid bike status filter.',
     });
   }
-
+  
   try {
     const db = pool.promise();
 
